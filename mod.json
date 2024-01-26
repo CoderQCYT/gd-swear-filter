@@ -1,0 +1,53 @@
+{
+	"geode": "2.0.0-beta.9",
+	"gd": "2.204",
+	"version": "v0.0.1",
+	"id": "coderqc.gdswearfilter",
+	"name": "Swear Filter",
+	"developer": "CoderQC",
+	"description": "Adds a filter to Geometry Dash.",
+	"settings": {
+		"filter-profanity": {
+            "name": "Disallow Profanity",
+            "description": "Whether or not to hide <cr>profanity</c>.",
+            "type": "bool",
+            "default": true
+        },
+		"filter-sexual": {
+            "name": "Disallow Sexual Words",
+            "description": "Whether or not to hide <cr>sexual words</c>.",
+            "type": "bool",
+            "default": true
+        },
+		"filter-racism": {
+            "name": "Disallow Racism",
+            "description": "Whether or not to hide <cr>racism</c>.\n<cy>(Doesn't censor much.)</c>",
+            "type": "bool",
+            "default": true
+        },
+		"filter-antilgbtq": {
+            "name": "Disallow LGBTQ+ Slurs",
+            "description": "Whether or not to hide <cr>LGBTQ+ slurs.</c>",
+            "type": "bool",
+            "default": true
+        },
+		"censor-comments": {
+            "name": "Censor Comments",
+            "description": "Whether or not to censor <cg>comments.</cg>",
+            "type": "bool",
+            "default": true
+        },
+		"censor-level-names": {
+            "name": "Censor Level Names",
+            "description": "Whether or not to censor <cg>level names.</cg>",
+            "type": "bool",
+            "default": true
+        },
+		"censor-level-descriptions": {
+            "name": "Censor Level Descriptions",
+            "description": "Whether or not to censor <cg>level descriptions.</cg>",
+            "type": "bool",
+            "default": true
+        }
+	}
+}
