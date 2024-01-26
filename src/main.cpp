@@ -55,7 +55,13 @@ const char* doFilter(const char * message) {
     std::regex pattern((std::string)
       "" + currentWord + (std::string)
       "", std::regex_constants::icase);
-    result = std::regex_replace(result, pattern, std::string(currentWord.length(), '*'));
+      std::string replacement = "";
+      replacement = std::string(currentWord.length(), '*');
+      if (Mod::get() -> getSettingValue < bool > ("relax-censor")) {
+replacement = currentWord[0] + std::string(replacement.length() - 2, '*') + currentWord[replacement.length() - 1];
+      }
+        
+    result = std::regex_replace(result, pattern, replacement);
     if (result.empty()) {
       result = oldResult;
     }

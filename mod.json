@@ -49,6 +49,12 @@
             "description": "Whether or not to censor <cg>level descriptions.</c>",
             "type": "bool",
             "default": true
+        },
+        "relax-censor": {
+            "name": "Relax Filter",
+            "description": "Exposes the first and last characters of the censored word.",
+            "type": "bool",
+            "default": true
         }
 	}
 }
