@@ -6,6 +6,7 @@
 	"name": "Swear Filter",
 	"developer": "CoderQC",
 	"description": "Adds a filter to Geometry Dash.",
+	"repository": "https://github.com/CoderQCFromScraatch/gd-swear-filter",
 	"settings": {
 		"filter-profanity": {
             "name": "Disallow Profanity",
