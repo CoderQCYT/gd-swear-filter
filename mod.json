@@ -34,19 +34,19 @@
         },
 		"censor-comments": {
             "name": "Censor Comments",
-            "description": "Whether or not to censor <cg>comments.</cg>",
+            "description": "Whether or not to censor <cg>comments.</c>",
             "type": "bool",
             "default": true
         },
 		"censor-level-names": {
             "name": "Censor Level Names",
-            "description": "Whether or not to censor <cg>level names.</cg>",
+            "description": "Whether or not to censor <cg>level names.</c>",
             "type": "bool",
             "default": true
         },
 		"censor-level-descriptions": {
-            "name": "Censor Level Descriptions",
-            "description": "Whether or not to censor <cg>level descriptions.</cg>",
+            "name": "Censor Level Desc.",
+            "description": "Whether or not to censor <cg>level descriptions.</c>",
             "type": "bool",
             "default": true
         }
