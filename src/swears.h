@@ -1,6 +1,5 @@
 #include <string>
 #include <array>
-using namespace std;
 
 std::array<std::string,20> profanity = {"fuck","shit","bitch", "twat","shitty","shittiest","shitter","fucker","fuckery","fucking","fucked","fucks","shits","bitches","bitching","bitcher","fuk","shitt","cunt","cunts"};
 std::array<std::string,29> sexual = {"sperm","sex","sexy","semen","jizz","ejaculate","jacking", "jerking", "edging", "masturbat", "jacked", "jerked", "edged", "penis", "pussy", "cock", "dick", "vajina", "vagina", "cunt", "fingerbang", "bang me", "bang you","orgy", "orgasm", "threesome","foursome","2g1c"};
