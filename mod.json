@@ -1,5 +1,5 @@
 {
-	"geode": "2.0.0-beta.9",
+	"geode": "2.0.0",
 	"gd": "2.204",
 	"version": "v0.0.1",
 	"id": "coderqc.gdswearfilter",
@@ -8,6 +8,12 @@
 	"description": "Adds a filter to Geometry Dash.",
 	"repository": "https://github.com/CoderQCFromScraatch/gd-swear-filter",
 	"settings": {
+        "strict-mode": {
+            "name": "Strict Mode",
+            "description": "Hides the <cr>entire word</c> when a word is fitered, not just the offending area.",
+            "type": "bool",
+            "default": false
+        },
 		"filter-profanity": {
             "name": "Disallow Profanity",
             "description": "Whether or not to hide <cr>profanity</c>.",
@@ -51,10 +57,10 @@
             "default": true
         },
         "relax-censor": {
-            "name": "Relax Filter",
+            "name": "Relax Result",
             "description": "Exposes the first and last characters of the censored word.",
             "type": "bool",
-            "default": true
+            "default": false
         }
 	}
 }
