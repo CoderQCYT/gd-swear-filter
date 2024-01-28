@@ -52,7 +52,7 @@ std::string doFilter(std::string message) {
     // This is an old failsafe method that isn't needed anymore, but still could be useful.
     // if (currentWord.empty()) continue;
   
-    std::string replacement = Mod::get() -> getSettingValue<bool>("relax-censor") 
+    std::string replacement = true //Mod::get() -> getSettingValue<bool>("relax-censor") 
     ? std::string(currentWord.length(), '*') 
     : replacement = currentWord[0] + 
       std::string(currentWord.length() - 2, '*') + 
@@ -82,10 +82,10 @@ class $modify(InfoLayer) {
   bool init(GJGameLevel * p0, GJUserScore * p1, GJLevelList * p2) {
     if (p0 != NULL) {
       if (Mod::get() -> getSettingValue<bool>("censor-level-names")) 
-        p0 -> m_levelName = doFilter(p0 -> m_levelName.c_str());
+        p0 -> m_levelName = doFilter(p0 -> m_levelName);
       
       if (Mod::get() -> getSettingValue<bool>("censor-level-descriptions")) 
-        p0 -> m_levelDesc = doFilter(p0 -> m_levelDesc.c_str());
+        p0 -> m_levelDesc = doFilter(p0 -> m_levelDesc);
       
     }
     return InfoLayer::init(p0, p1, p2);
@@ -96,10 +96,10 @@ class $modify(LevelCell) {
   TodoReturn loadFromLevel(GJGameLevel* p0) {
     if (p0 != NULL) {
       if (Mod::get() -> getSettingValue<bool>("censor-level-names")) 
-        p0 -> m_levelName = doFilter(p0 -> m_levelName.c_str());
+        p0 -> m_levelName = doFilter(p0 -> m_levelName);
       
       if (Mod::get() -> getSettingValue<bool>("censor-level-descriptions")) 
-        p0 -> m_levelDesc = doFilter(p0 -> m_levelDesc.c_str());
+        p0 -> m_levelDesc = doFilter(p0 -> m_levelDesc);
       
     }
     return LevelCell::loadFromLevel(p0);
