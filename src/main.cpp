@@ -93,7 +93,7 @@ class $modify(InfoLayer) {
 };
 
 class $modify(LevelCell) {
-  TodoReturn loadFromLevel(GJGameLevel* p0) {
+  void loadFromLevel(GJGameLevel* p0) {
     if (p0 != NULL) {
       if (Mod::get() -> getSettingValue<bool>("censor-level-names")) 
         p0 -> m_levelName = doFilter(p0 -> m_levelName);
