@@ -1,92 +1,99 @@
 #include <Geode/Geode.hpp>
+#include <Geode/modify/InfoLayer.hpp>
+#include <Geode/modify/LevelCell.hpp>
+#include <Geode/modify/CommentCell.hpp>
+#include <Geode/modify/TextGameObject.hpp>
+#include <Geode/modify/PauseLayer.hpp>
+#include <Geode/cocos/label_nodes/CCLabelBMFont.h>
+#include <Geode/cocos/base_nodes/CCNode.h>
+#include <Geode/cocos/layers_scenes_transitions_nodes/CCScene.h>
+#include <Geode/utils/base64.hpp>
 
 #include <regex>
-
-#include <Geode/modify/InfoLayer.hpp>
-
-#include <Geode/modify/LevelCell.hpp>
-
-#include <Geode/modify/CommentCell.hpp>
-
-#include "swears.h"
+#include <fstream>
+#include <vector>
+#include <string>
 
 using namespace geode::prelude;
-using namespace std;
 
-// Taken from StackOverflow, original answer by Manuel Martinez
-static std::string base64_decode(const std::string & in) {
-  std::string out;
-  std::vector < int > T(256, -1);
-  for (int i = 0; i < 64; i++) T["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/" [i]] = i;
+#include "swears.hpp"
 
-  int val = 0, valb = -8;
-  for (unsigned char c: in) {
-    if (T[c] == -1) break;
-    val = (val << 6) + T[c];
-    valb += 6;
-    if (valb >= 0) {
-      out.push_back(char((val >> valb) & 0xFF));
-      valb -= 8;
-    }
+// The actual text filtering system
+std::string doFilter(const std::string & message) {
+  int64_t filterLevel = Mod::get()->getSettingValue<int64_t>("filter-level");
+  if (filterLevel <= 0) return message;
+
+  bool replacementsEnabled = Mod::get()->getSettingValue<bool>("enable-replacements");
+  bool strictMode = !replacementsEnabled && Mod::get()->getSettingValue<bool>("strict-mode");
+  bool relaxCensor = !replacementsEnabled && Mod::get()->getSettingValue<bool>("relax-censor");
+
+  std::string filtered = message;
+
+  for (const auto & entry: swears) {
+    if (entry.level > filterLevel) continue;
+
+    std::string result;
+    std::string::const_iterator searchStart(filtered.cbegin());
+    std::smatch match;
+
+    while (std::regex_search(searchStart, filtered.cend(), match, entry.pattern)) {
+				result.append(searchStart, match.prefix().second);
+
+				std::string word = match.str();
+				std::string replacement;
+
+				if (replacementsEnabled && !entry.replacements.empty()) {
+						int bestLevel = -1;
+						for (auto& [lvl, val] : entry.replacements) {
+								if (lvl <= filterLevel && lvl > bestLevel) bestLevel = lvl;
+						}
+						if (bestLevel != -1) replacement = entry.replacements.at(bestLevel);
+						else replacement = std::string(word.length(), '*');
+				} else {
+						replacement = word;
+
+						if (!relaxCensor) replacement = std::string(word.length(), '*');
+						else for (size_t i = 1; i < word.size() - 1; ++i) replacement[i] = '*';
+				}
+
+				result.append(replacement);
+				searchStart = match.suffix().first;
+		}
+
+    result.append(searchStart, filtered.cend());
+    filtered = result;
   }
-  return out;
-}
 
-std::string doFilter(std::string message) {
-  std::string result = message;
-  std::vector<std::string> swears;
-  if (Mod::get() -> getSettingValue < bool > ("filter-profanity")) 
-    for (const auto & swear: profanity) swears.push_back(swear);
-    
-  if (Mod::get() -> getSettingValue < bool > ("filter-sexual")) 
-    for (const auto & swear: sexual) swears.push_back(swear);
-    
-  if (Mod::get() -> getSettingValue < bool > ("filter-racism")) 
-    for (const auto & swear: racism) swears.push_back(swear);
+  geode::log::debug("Filter: {}->{}", message, filtered);
 
-  if (Mod::get() -> getSettingValue < bool > ("filter-antilgbtq")) 
-    for (const auto & swear: antilgbtq) swears.push_back(swear);
-    
-  
-  for (const auto& currentWord: swears) {
-    // This is an old failsafe method that isn't needed anymore, but still could be useful.
-    // if (currentWord.empty()) continue;
-  
-    std::string replacement = true //Mod::get() -> getSettingValue<bool>("relax-censor") 
-    ? std::string(currentWord.length(), '*') 
-    : replacement = currentWord[0] + 
-      std::string(currentWord.length() - 2, '*') + 
-      currentWord[currentWord.length() - 1];
-    
-
-    std::string extraPattern = Mod::get()->getSettingValue<bool>("strict-mode") 
-    ? "\\b" 
-    : "";
-
-    std::regex pattern(extraPattern + currentWord + extraPattern, std::regex_constants::icase);
-    result = std::regex_replace(result, pattern, replacement);
-  }
-  return result;
+  return filtered;
 }
 
 class $modify(CommentCell) {
-  void loadFromComment(GJComment * p0) {
-    if (Mod::get() -> getSettingValue<bool>("censor-comments")) 
-      p0 -> m_commentString = doFilter(p0 -> m_commentString);
-    
+  void loadFromComment(GJComment* p0) {
+    if (Mod::get()->getSettingValue<bool>("censor-comments"))
+      p0->m_commentString = doFilter(p0->m_commentString);
+
     CommentCell::loadFromComment(p0);
   }
 };
 
 class $modify(InfoLayer) {
-  bool init(GJGameLevel * p0, GJUserScore * p1, GJLevelList * p2) {
+  bool init(GJGameLevel* p0, GJUserScore* p1, GJLevelList* p2) {
     if (p0 != NULL) {
-      if (Mod::get() -> getSettingValue<bool>("censor-level-names")) 
-        p0 -> m_levelName = doFilter(p0 -> m_levelName);
-      
-      if (Mod::get() -> getSettingValue<bool>("censor-level-descriptions")) 
-        p0 -> m_levelDesc = doFilter(p0 -> m_levelDesc);
-      
+      if (Mod::get()->getSettingValue<bool>("censor-level-names"))
+        p0->m_levelName = doFilter(p0->m_levelName);
+
+      if (Mod::get()->getSettingValue<bool>("censor-level-descriptions")) {
+        auto decodedResult = base64::decodeString(p0->m_levelDesc);
+
+        if (decodedResult.isOk()) {
+          std::string decodedDesc = decodedResult.unwrap();
+          std::string filteredDesc = doFilter(decodedDesc);
+          p0->m_levelDesc = base64::encode(filteredDesc);
+        }
+      }
+
     }
     return InfoLayer::init(p0, p1, p2);
   }
@@ -95,13 +102,49 @@ class $modify(InfoLayer) {
 class $modify(LevelCell) {
   void loadFromLevel(GJGameLevel* p0) {
     if (p0 != NULL) {
-      if (Mod::get() -> getSettingValue<bool>("censor-level-names")) 
-        p0 -> m_levelName = doFilter(p0 -> m_levelName);
-      
-      if (Mod::get() -> getSettingValue<bool>("censor-level-descriptions")) 
-        p0 -> m_levelDesc = doFilter(p0 -> m_levelDesc);
-      
+      if (Mod::get()->getSettingValue<bool>("censor-level-names"))
+        p0->m_levelName = doFilter(p0->m_levelName);
+
+      if (Mod::get()->getSettingValue<bool>("censor-level-descriptions")) {
+        auto decodedResult = base64::decodeString(p0->m_levelDesc);
+
+        if (decodedResult.isOk()) {
+          std::string decodedDesc = decodedResult.unwrap();
+          std::string filteredDesc = doFilter(decodedDesc);
+          p0->m_levelDesc = base64::encode(filteredDesc);
+        }
+      }
+
     }
     return LevelCell::loadFromLevel(p0);
+  }
+};
+
+class $modify(TextGameObject) {
+  void updateTextObject(gd::string text, bool defaultFont) {
+    text = doFilter(text);
+
+    return TextGameObject::updateTextObject(text, defaultFont);
+  }
+
+  static TextGameObject* create(cocos2d::CCTexture2D* texture) {
+    TextGameObject* object = TextGameObject::create(texture);
+	  if (Mod::get()->getSettingValue<bool>("censor-text-objects"))
+		  object->m_text = doFilter(object->m_text);
+
+      return object;
+    }
+};
+
+class $modify(PauseLayer) {
+  static PauseLayer* create(bool unfocused) {
+    geode::log::debug("PauseLayer hook works!");
+    auto pauseLayer = PauseLayer::create(unfocused);
+    cocos2d::CCScene* scene = cocos2d::CCScene::get();
+    cocos2d::CCLabelBMFont* levelName = (cocos2d::CCLabelBMFont*)scene->getChildByID("music-label");
+    std::string text = levelName->getString();
+    levelName->setString(doFilter(text).c_str());
+
+    return pauseLayer;
   }
 };

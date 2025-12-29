@@ -1,68 +1,75 @@
 {
-	"geode": "3.2.0",
-	"gd": {
-        "win": "2.206"
+  "geode": "4.10.0",
+  "gd": {
+    "win": "2.2074",
+    "android": "2.2074"
+  },
+  "version": "v1.1.0",
+  "id": "coderqc.gdswearfilter",
+  "name": "Swear Filter",
+  "developer": "CoderQC",
+  "description": "Adds a filter to Geometry Dash.",
+  "links": {
+    "source": "https://github.com/CoderQCFromScraatch/gd-swear-filter"
+  },
+  "settings": {
+    "filter-level": {
+      "type": "int",
+      "name": "Filter Level",
+      "description": "The sensitivity of the filter.",
+      "default": 4,
+      "min": 0,
+      "max": 5,
+      "controls": {
+        "arrows": true,
+        "arrow-step": 1,
+        "big-arrows": false,
+        "slider": false,
+        "input": true
+      }
     },
-	"version": "v1.0.2",
-	"id": "coderqc.gdswearfilter",
-	"name": "Swear Filter",
-	"developer": "CoderQC",
-	"description": "Adds a filter to Geometry Dash.",
-	"repository": "https://github.com/CoderQCFromScraatch/gd-swear-filter",
-	"settings": {
-        "strict-mode": {
-            "name": "Strict Mode",
-            "description": "Hides the <cr>entire word</c> when a word is fitered, not just the offending area.",
-            "type": "bool",
-            "default": false
-        },
-		"filter-profanity": {
-            "name": "Disallow Profanity",
-            "description": "Whether or not to hide <cr>profanity</c>.",
-            "type": "bool",
-            "default": true
-        },
-		"filter-sexual": {
-            "name": "Disallow Sexual Words",
-            "description": "Whether or not to hide <cr>sexual words</c>.",
-            "type": "bool",
-            "default": true
-        },
-		"filter-racism": {
-            "name": "Disallow Racism",
-            "description": "Whether or not to hide <cr>racism</c>.\n<cy>(Doesn't censor much.)</c>",
-            "type": "bool",
-            "default": true
-        },
-		"filter-antilgbtq": {
-            "name": "Disallow LGBTQ+ Slurs",
-            "description": "Whether or not to hide <cr>LGBTQ+ slurs.</c>",
-            "type": "bool",
-            "default": true
-        },
-		"censor-comments": {
-            "name": "Censor Comments",
-            "description": "Whether or not to censor <cg>comments.</c>",
-            "type": "bool",
-            "default": true
-        },
-		"censor-level-names": {
-            "name": "Censor Level Names",
-            "description": "Whether or not to censor <cg>level names.</c>",
-            "type": "bool",
-            "default": true
-        },
-		"censor-level-descriptions": {
-            "name": "Censor Level Desc.",
-            "description": "Whether or not to censor <cg>level descriptions.</c>",
-            "type": "bool",
-            "default": true
-        },
-        "relax-censor": {
-            "name": "Relax Result",
-            "description": "Exposes the first and last characters of the censored word.",
-            "type": "bool",
-            "default": false
-        }
-	}
+    "enable-replacements": {
+      "name": "Enable Replacements",
+      "description": "Attempts to <cy>replace</c> censored words with more-appropriate alternatives.",
+      "type": "bool",
+      "default": false
+    },
+    "strict-mode": {
+      "name": "Strict Mode",
+      "description": "Hides the <cr>entire word</c> when a word is fitered, not just the offending area.",
+      "type": "bool",
+      "default": false
+    },
+    "relax-censor": {
+      "name": "Relax Result",
+      "description": "Exposes the first and last characters of the censored word.",
+      "type": "bool",
+      "default": false,
+      "enable-if": "!enable-replacements"
+    },
+    "censor-comments": {
+      "name": "Censor Comments",
+      "description": "Whether or not to censor <cg>comments.</c>",
+      "type": "bool",
+      "default": true
+    },
+    "censor-level-names": {
+      "name": "Censor Level Names",
+      "description": "Whether or not to censor <cg>level names.</c>",
+      "type": "bool",
+      "default": true
+    },
+    "censor-level-descriptions": {
+      "name": "Censor Level Desc.",
+      "description": "Whether or not to censor <cg>level descriptions.</c>",
+      "type": "bool",
+      "default": true
+    },
+    "censor-text-objects": {
+      "name": "Censor Text Objects",
+      "description": "Whether or not to censor <cg>text objects</c> in a level.",
+      "type": "bool",
+      "default": true
+    }
+  }
 }
