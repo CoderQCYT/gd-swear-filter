@@ -136,6 +136,7 @@ class $modify(TextGameObject) {
     }
 };
 
+/*
 class $modify(PauseLayer) {
   static PauseLayer* create(bool unfocused) {
     geode::log::debug("PauseLayer hook works!");
@@ -148,3 +149,4 @@ class $modify(PauseLayer) {
     return pauseLayer;
   }
 };
+*/
