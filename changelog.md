@@ -1,6 +1,6 @@
 # v1.1.0
 
- * Updated for 2.2074
+ * Updated for 2.2081
  * Fixed relaxed mode
  * Added more filtered words
  * Added word replacements
