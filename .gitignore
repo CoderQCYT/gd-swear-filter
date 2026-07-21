@@ -55,3 +55,4 @@
 # prettier
 .prettierc
 /.vs
+/CMakeSettings.json
