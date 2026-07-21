@@ -28,6 +28,7 @@ std::vector<SwearEntry> swears = {
     {"transgenderist", std::regex("\\btransgenderist\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"transgenderism", std::regex("\\btransgenderism\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"transsexualism", std::regex("\\btranssexualism\\b", std::regex_constants::icase), 1, {{1,""}}},
+    {"transsexualist", std::regex("\\btranssexualist\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"batty boy", std::regex("\\bbatty boy\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"battyboy", std::regex("\\bbattyboy\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"cocksucker", std::regex("\\bcocksucker\\b", std::regex_constants::icase), 1, {{1,""}}},

@@ -54,3 +54,4 @@
 
 # prettier
 .prettierc
+/.vs
