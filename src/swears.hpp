@@ -110,10 +110,10 @@ std::vector<SwearEntry> swears = {
 
     // --- Level 5: Religious and silly levels of profanity ---
     {"god damn", std::regex("\\bgod damn\\b", std::regex_constants::icase), 5, {{5,""}}},
-    {"hell", std::regex("\\hell\\b", std::regex_constants::icase), 5, {{5,"heck"}}},
-    {"crap", std::regex("\\bshit\\b", std::regex_constants::icase), 3, {{3,"poop"}}},
-    {"crappy", std::regex("\\bshitty\\b", std::regex_constants::icase), 3, {{3,"muddy"}}},
-    {"crappiest", std::regex("\\bshittiest\\b", std::regex_constants::icase), 3, {{3,"muddiest"}}},
-    {"crapper", std::regex("\\bshitter\\b", std::regex_constants::icase), 3, {{3,"toilet"}}},
-    {"craps", std::regex("\\bshits\\b", std::regex_constants::icase), 3, {{3,"poops"}}},
+    {"hell", std::regex("\\bhell\\b", std::regex_constants::icase), 5, {{5,"heck"}}},
+    {"crap", std::regex("\\crap\\b", std::regex_constants::icase), 3, {{3,"poop"}}},
+    {"crappy", std::regex("\\crappy\\b", std::regex_constants::icase), 3, {{3,"muddy"}}},
+    {"crappiest", std::regex("\\crappiest\\b", std::regex_constants::icase), 3, {{3,"muddiest"}}},
+    {"crapper", std::regex("\\crapper\\b", std::regex_constants::icase), 3, {{3,"toilet"}}},
+    {"craps", std::regex("\\craps\\b", std::regex_constants::icase), 3, {{3,"poops"}}},
 };
