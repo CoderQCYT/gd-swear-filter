@@ -1,3 +1,6 @@
+# v1.1.1
+ * Multi-platform support
+
 # v1.1.0
 
  * Updated for 2.2081
