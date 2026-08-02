@@ -1,3 +1,6 @@
+# v1.1.2
+ * Fixed a crashin issue on macOS and potentially other platforms
+
 # v1.1.1
  * Multi-platform support
 
