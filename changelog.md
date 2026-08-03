@@ -1,3 +1,7 @@
+# v1.1.3
+ * Added two new slurs to the filter and tweaked other ones to be less forgiving.
+ * Fixed a bug where replacement words from a lower level would not be overwritten by a higher level replacement word.
+
 # v1.1.2
  * Fixed a crashing issue on macOS and potentially other platforms
 
