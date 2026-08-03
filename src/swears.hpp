@@ -13,10 +13,9 @@ struct SwearEntry {
 
 std::vector<SwearEntry> swears = {
     // --- Level 1: Slurs against protected classes ---
-    {"nigger", std::regex("\\bnigger\\b", std::regex_constants::icase), 1, {{1,"black person"}}},
-    {"faggot", std::regex("\\bfaggot\\b", std::regex_constants::icase), 1, {{1,"gay people"}}},
-    {"nigga", std::regex("\\bnigga\\b", std::regex_constants::icase), 1, {{1,"black people"}}},
-    {"niggers", std::regex("\\bniggers\\b", std::regex_constants::icase), 1, {{1,"black people"}}},
+    {"nigger", std::regex("\\bnigger", std::regex_constants::icase), 1, {{1,"black person"}}},
+    {"faggot", std::regex("\\bfaggot", std::regex_constants::icase), 1, {{1,"gay person"}}},
+    {"nigga", std::regex("\\bnigga", std::regex_constants::icase), 1, {{1,"black people"}}},
     {"jipped", std::regex("\\bjipped\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"gypped", std::regex("\\bgypped\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"peanut gallery", std::regex("\\bpeanut gallery\\b", std::regex_constants::icase), 1, {{1,""}}},
@@ -54,6 +53,8 @@ std::vector<SwearEntry> swears = {
     {"chicken-plucker", std::regex("\\bchicken-plucker\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"cuntboy", std::regex("\\bcuntboy\\b", std::regex_constants::icase), 1, {{1,""}}},
     {"fag hag", std::regex("\\bfag hag\\b", std::regex_constants::icase), 1, {{1,""}}},
+    {"wetback", std::regex("\\bwetback\\b", std::regex_constants::icase), 1, {{1,""}}},
+    {"retard", std::regex("\\bretard", std::regex_constants::icase), 1, {{1,""}}},
 
     // --- Level 2: Sexual profanity ---
     {"sperm", std::regex("\\bsperm\\b", std::regex_constants::icase), 2, {{2,"sexual material"}}},
@@ -111,9 +112,9 @@ std::vector<SwearEntry> swears = {
     // --- Level 5: Religious and silly levels of profanity ---
     {"god damn", std::regex("\\bgod damn\\b", std::regex_constants::icase), 5, {{5,""}}},
     {"hell", std::regex("\\bhell\\b", std::regex_constants::icase), 5, {{5,"heck"}}},
-    {"crap", std::regex("\\crap\\b", std::regex_constants::icase), 3, {{3,"poop"}}},
-    {"crappy", std::regex("\\crappy\\b", std::regex_constants::icase), 3, {{3,"muddy"}}},
-    {"crappiest", std::regex("\\crappiest\\b", std::regex_constants::icase), 3, {{3,"muddiest"}}},
-    {"crapper", std::regex("\\crapper\\b", std::regex_constants::icase), 3, {{3,"toilet"}}},
-    {"craps", std::regex("\\craps\\b", std::regex_constants::icase), 3, {{3,"poops"}}},
+    {"crap", std::regex("\\bcrap\\b", std::regex_constants::icase), 5, {{5,"poop"}}},
+    {"crappy", std::regex("\\bcrappy\\b", std::regex_constants::icase), 5, {{5,"muddy"}}},
+    {"crappiest", std::regex("\\bcrappiest\\b", std::regex_constants::icase), 5, {{5,"muddiest"}}},
+    {"crapper", std::regex("\\bcrapper\\b", std::regex_constants::icase), 5, {{5,"toilet"}}},
+    {"craps", std::regex("\\bcraps\\b", std::regex_constants::icase), 5, {{5,"poops"}}},
 };
