@@ -29,39 +29,41 @@ std::string doFilter(const std::string & message) {
 
   std::string filtered = message;
 
-  for (const auto & entry: swears) {
-    if (entry.level > filterLevel) continue;
+  for (int64_t currentLevel = 1; currentLevel <= filterLevel; ++currentLevel) {
+      for (const auto& entry : swears) {
+          if (entry.level != currentLevel) continue;
 
-    std::string result;
-    std::string::const_iterator searchStart(filtered.cbegin());
-    std::smatch match;
+          std::string result;
+          std::string::const_iterator searchStart(filtered.cbegin());
+          std::smatch match;
 
-    while (std::regex_search(searchStart, filtered.cend(), match, entry.pattern)) {
-				result.append(searchStart, match.prefix().second);
+          while (std::regex_search(searchStart, filtered.cend(), match, entry.pattern)) {
+              result.append(searchStart, match.prefix().second);
 
-				std::string word = match.str();
-				std::string replacement;
+              std::string word = match.str();
+              std::string replacement;
 
-				if (replacementsEnabled && !entry.replacements.empty()) {
-						int bestLevel = -1;
-						for (auto& [lvl, val] : entry.replacements) {
-								if (lvl <= filterLevel && lvl > bestLevel) bestLevel = lvl;
-						}
-						if (bestLevel != -1) replacement = entry.replacements.at(bestLevel);
-						else replacement = std::string(word.length(), '*');
-				} else {
-						replacement = word;
+              if (replacementsEnabled && !entry.replacements.empty()) {
+                  int64_t bestLevel = -1;
+                  for (auto& [lvl, val] : entry.replacements) {
+                      if (lvl <= filterLevel && lvl > bestLevel) bestLevel = lvl;
+                  }
+                  if (bestLevel != -1) replacement = entry.replacements.at(bestLevel);
+                  else replacement = std::string(word.length(), '*');
+              } else {
+                  replacement = word;
 
-						if (!relaxCensor) replacement = std::string(word.length(), '*');
-						else for (size_t i = 1; i < word.size() - 1; ++i) replacement[i] = '*';
-				}
+                  if (!relaxCensor) replacement = std::string(word.length(), '*');
+                  else for (size_t i = 1; i < word.size() - 1; ++i) replacement[i] = '*';
+              }
 
-				result.append(replacement);
-				searchStart = match.suffix().first;
-		}
+              result.append(replacement);
+              searchStart = match.suffix().first;
+          }
 
-    result.append(searchStart, filtered.cend());
-    filtered = result;
+          result.append(searchStart, filtered.cend());
+          filtered = result;
+      }
   }
 
   geode::log::debug("Filter: {}->{}", message, filtered);
