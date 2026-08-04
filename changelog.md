@@ -1,4 +1,5 @@
-# v1.1.3
+# v1.2.0
+ * Added filtering song names
  * Added two new slurs to the filter and tweaked other ones to be less forgiving.
  * Fixed a bug where replacement words from a lower level would not be overwritten by a higher level replacement word.
 
@@ -9,7 +10,6 @@
  * Multi-platform support
 
 # v1.1.0
-
  * Updated for 2.2081
  * Fixed relaxed mode
  * Added more filtered words
@@ -17,9 +17,7 @@
  * Added filtering levels
 
 # v1.0.2
-
  * Updated for 2.206
 
 # v1.0.0
-
  * Initial release
