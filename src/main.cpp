@@ -37,7 +37,11 @@ std::string doFilter(const std::string & message) {
           std::string::const_iterator searchStart(filtered.cbegin());
           std::smatch match;
 
-          while (std::regex_search(searchStart, filtered.cend(), match, entry.pattern)) {
+			std::string pattern = entry.pattern;
+
+			if (strictMode) pattern = std::regex_replace(pattern, std::regex("\\\\b"), "");
+
+			while (std::regex_search(searchStart, filtered.cend(), match, std::regex(pattern, std::regex_constants::icase))) {
               result.append(searchStart, match.prefix().second);
 
               std::string word = match.str();
