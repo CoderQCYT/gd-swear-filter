@@ -6,14 +6,26 @@
     "android": "2.2081",
     "ios": "2.2081"
   },
-  "version": "v1.1.3",
+  "version": "v1.2.0",
   "id": "coderqc.gdswearfilter",
   "name": "Swear Filter",
   "developer": "CoderQC",
   "description": "Adds a filter to Geometry Dash.",
   "links": {
-    "source": "https://github.com/CoderQCFromScraatch/gd-swear-filter"
+    "source": "https://github.com/CoderQCFromScraatch/gd-swear-filter",
+    "community": "https://link.coderqc.info/discord"
   },
+  "dependencies": {
+    "geode.node-ids": {
+      "version": ">=v1.22.0",
+      "required": true
+    }
+  },
+  "tags": [
+    "universal",
+    "enhancement",
+    "interface"
+  ],
   "settings": {
     "filter-level": {
       "type": "int",
