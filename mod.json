@@ -38,7 +38,7 @@
     },
     "strict-mode": {
       "name": "Strict Mode",
-      "description": "Hides the <cr>entire word</c> when a word is fitered, not just the offending area.",
+      "description": "Censors words outside the word-boundary (e.g. \"class\" would be filtered as \"cl***\").",
       "type": "bool",
       "default": false
     },
@@ -64,6 +64,12 @@
     "censor-level-descriptions": {
       "name": "Censor Level Desc.",
       "description": "Whether or not to censor <cg>level descriptions.</c>",
+      "type": "bool",
+      "default": true
+    },
+    "censor-song-names": {
+      "name": "Censor Song Names",
+      "description": "Whether or not to censor <cg>song names.</c>",
       "type": "bool",
       "default": true
     },
