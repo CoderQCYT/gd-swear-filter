@@ -36,6 +36,7 @@ std::string doFilter(const std::string& message) {
           std::string result;
           std::string::const_iterator searchStart(filtered.cbegin());
           std::smatch match;
+			char replacementChar = Mod::get()->getSettingValue<std::string>("replacement-character")[0];
 
 			std::string pattern = entry.pattern;
 
@@ -53,12 +54,13 @@ std::string doFilter(const std::string& message) {
                       if (lvl <= filterLevel && lvl > bestLevel) bestLevel = lvl;
                   }
                   if (bestLevel != -1) replacement = entry.replacements.at(bestLevel);
-                  else replacement = std::string(word.length(), '*');
-              } else {
+					else replacement = std::string(word.length(), replacementChar);
+				}
+				else {
                   replacement = word;
 
-                  if (!relaxCensor) replacement = std::string(word.length(), '*');
-                  else for (size_t i = 1; i < word.size() - 1; ++i) replacement[i] = '*';
+					if (!relaxCensor) replacement = std::string(word.length(), replacementChar);
+					else for (size_t i = 1; i < word.size() - 1; ++i) replacement[i] = replacementChar;
               }
 
               result.append(replacement);

@@ -72,6 +72,13 @@
       "description": "Whether or not to censor <cg>text objects</c> in a level.",
       "type": "bool",
       "default": true
+    },
+    "replacement-character": {
+      "name": "Replacement Character",
+      "description": "The character to use for replacing censored words.",
+      "type": "string",
+      "default": "*",
+      "one-of": [ " ", "*", "#", "-" ]
     }
   }
 }
