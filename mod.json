@@ -87,7 +87,7 @@
     },
     "censor-text-objects": {
       "name": "Censor Text Objects",
-      "description": "Whether or not to censor <cg>text objects</c> in a level.",
+      "description": "Whether or not to censor <cg>text objects</c> in a level (not in the editor).",
       "type": "bool",
       "default": true
     },
