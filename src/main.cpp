@@ -72,7 +72,7 @@ std::string doFilter(const std::string& message) {
       }
   }
 
-  geode::log::debug("Filter: {}->{}", message, filtered);
+	// geode::log::debug("Filter: {}->{}", message, filtered);
 
   return filtered;
 }
