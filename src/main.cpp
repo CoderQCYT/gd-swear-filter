@@ -128,6 +128,7 @@ class $modify(LevelCell) {
 
 class $modify(TextGameObject) {
   void updateTextObject(gd::string text, bool defaultFont) {
+		if (Mod::get()->getSettingValue<bool>("censor-text-objects"))
     text = doFilter(text);
 
     return TextGameObject::updateTextObject(text, defaultFont);
