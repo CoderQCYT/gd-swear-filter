@@ -19,7 +19,7 @@ using namespace geode::prelude;
 #include "swears.hpp"
 
 // The actual text filtering system
-std::string doFilter(const std::string & message) {
+std::string doFilter(const std::string& message) {
   int64_t filterLevel = Mod::get()->getSettingValue<int64_t>("filter-level");
   if (filterLevel <= 0) return message;
 
