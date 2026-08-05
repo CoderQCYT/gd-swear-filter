@@ -12,8 +12,8 @@
   "developer": "CoderQC",
   "description": "Adds a filter to Geometry Dash.",
   "links": {
-    "source": "https://github.com/CoderQCFromScraatch/gd-swear-filter",
-    "community": "https://link.coderqc.info/discord"
+    "source": "https://github.com/CoderQCYT/gd-swear-filter",
+    "community": "https://discord.gg/U2HUKe2Wwe"
   },
   "dependencies": {
     "geode.node-ids": {
