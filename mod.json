@@ -31,9 +31,9 @@
       "type": "int",
       "name": "Filter Level",
       "description": "The sensitivity of the filter.",
-      "default": 4,
+      "default": 5,
       "min": 0,
-      "max": 5,
+      "max": 6,
       "controls": {
         "arrows": true,
         "arrow-step": 1,
