@@ -30,7 +30,7 @@
     "filter-level": {
       "type": "int",
       "name": "Filter Level",
-      "description": "The sensitivity of the filter.",
+      "description": "The sensitivity of the <cy>filter</c>. Higher filter levels inherit lower levels. (1 = Slurs against protected classes,\n2 = Mild sexual profanity,\n3 = Moderate sexual profanity,\n4 = Severe sexual profanity,\n5 = Excrement profanity,\n6 = Religious and silly levels of profanity)",
       "default": 5,
       "min": 0,
       "max": 6,
