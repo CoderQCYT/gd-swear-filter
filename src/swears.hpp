@@ -58,7 +58,7 @@ std::vector<SwearEntry> swears = {
 	{"dyke", "\\bdyke\\b", 1, {{1,"lesbian"}}},
 	{"nga", "\\bnga\\b", 1, {}},
 
-	// --- Level 2: Moderate sexual profanity ---
+	// --- Level 2: Severe sexual profanity ---
 	{"sperm", "\\bsperm\\b", 2, {}},
 	{"sex", "\\bsex\\b", 2, {}},
 	{"sexy", "\\bsexy\\b", 2, {{2,"attractive"}}},
@@ -97,7 +97,7 @@ std::vector<SwearEntry> swears = {
 	{"cvnt", "\\bcvnt", 2, {{2,"jerk"}}},
 	{"twat", "\\btwat\\b", 2, {{2,"jerk"}} },
 
-	// --- Level 3: Mild sexual profanity ---
+	// --- Level 3: Moderate sexual profanity ---
 	{"fuck", "\\bfuck\\b", 3, {{3,"hell"}}},
 	{"what the fuck", "\\bwhat the fuck\\b", 3, {{3,"what the hell"}}},
 	{"fuckery", "\\bfuckery\\b", 3, {{3,"nonsense"}}},
