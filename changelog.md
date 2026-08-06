@@ -1,31 +1,31 @@
 # v1.2.1
-	- Added distinction between mild and moderate sexual profanity (levels 3 and 4!)
-	- Added more filtered words and tweaked existing ones
-	- Made the "Filter Level" setting more descriptive
-	- Updated community link to not use a branded URL shortener
+- Added distinction between mild and moderate sexual profanity (levels 3 and 4!)
+- Added more filtered words and tweaked existing ones
+- Made the "Filter Level" setting more descriptive
+- Updated community link to not use a branded URL shortener
 
 # v1.2.0
-	- Made filtering less-destructive (requires dependency for Node IDs mod though)
-	- Added filtering song names
-	- Added two new slurs to the filter and tweaked other filtered words to be less forgiving
-	- Fixed the level name in the pause menu not being filtered
-	- Fixed a bug where replacement words from a lower level would not be overwritten by a higher level replacement word
+- Made filtering less-destructive (requires dependency for Node IDs mod though)
+- Added filtering song names
+- Added two new slurs to the filter and tweaked other filtered words to be less forgiving
+- Fixed the level name in the pause menu not being filtered
+- Fixed a bug where replacement words from a lower level would not be overwritten by a higher level replacement word
 
 # v1.1.2
-	- Fixed a crashing issue on macOS and potentially other platforms
+- Fixed a crashing issue on macOS and potentially other platforms
 
 # v1.1.1
-	- Multi-platform support
+- Multi-platform support
 
 # v1.1.0
-	- Updated for 2.2081
-	- Fixed relaxed mode
-	- Added more filtered words
-	- Added word replacements
-	- Added filtering levels
+- Updated for 2.2081
+- Fixed relaxed mode
+- Added more filtered words
+- Added word replacements
+- Added filtering levels
 
 # v1.0.2
-	- Updated for 2.206
+- Updated for 2.206
 
 # v1.0.0
-	- Initial release
+- Initial release
