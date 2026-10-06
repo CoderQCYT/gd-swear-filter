@@ -1,3 +1,6 @@
+# v1.3.0
+- Hook CCLabelBMFont to allow filtering of more labels.
+
 # v1.2.1
 - Added distinction between mild and moderate sexual profanity (levels 3 and 4!)
 - Added more filtered words and tweaked existing ones
